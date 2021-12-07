@@ -1,0 +1,64 @@
+
+.App-header {
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  background-color: #3D5A80;
+}
+
+.title {
+  color: #fff;
+  margin: 0;
+  padding: 2vh 0vw 2vh 2vw;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #3D5A80;
+  border-radius: 5px;
+  margin-bottom: 2vh;
+}
+
+.search {
+  width: 80vw;
+  height: 38px;
+  font-size: 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2px 8px;
+  border: none;
+  flex: 11;
+  border-radius: 5px;
+
+}
+
+input:focus {
+  outline: none;
+}
+
+.submit {
+  height: 42px;
+  margin: 0 0 0 -5px;
+  flex: 1;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: none;
+  background-color: #5fd75f;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 5vh 5vw;
+}
+
+.current {
+  width: 80vw;
+  height: 40vh;
+  background-color:	#afd7ff;
+  border-radius: 10px;
+  border: 1px solid #b2b2b2;
+  box-shadow: -2px 2px 5px 2px #ccc;
+}
