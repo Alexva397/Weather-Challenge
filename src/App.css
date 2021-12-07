@@ -57,8 +57,34 @@ main {
 .current {
   width: 80vw;
   height: 40vh;
+  padding: 2vh 2vw;
   background-color:	#afd7ff;
   border-radius: 10px;
   border: 1px solid #b2b2b2;
   box-shadow: -2px 2px 5px 2px #ccc;
+}
+
+.current-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.temp-current {
+  font-size: 64px;
+}
+
+h2 {
+  margin: 0;
+}
+.date {
+  font-size: 24px;
+}
+
+.current-details {
+  margin-top: 2vh;
+  display: flex;
+  flex: 1;
+  background-color: #fff8dc;
+  padding: 15px;
 }
