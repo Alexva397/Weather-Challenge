@@ -1,14 +1,9 @@
 import { getDayOfWeek, getMonthString, formatDay } from "../utils/date";
 
-
 const CurrentCard = ({ location, current, feelsLike, icon, iconAlt }) => {
     const date = new Date();
-
     const formattedDate = `${getDayOfWeek(date)}, ${getMonthString(date)} ${formatDay(date)}` 
-    console.log(formattedDate)
     
-
-
     return (
         <div className="current">
             <div>{formattedDate}</div>
