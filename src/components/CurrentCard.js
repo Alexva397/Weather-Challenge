@@ -1,9 +1,10 @@
 import { getDayOfWeek, getMonthString, formatDay } from "../utils/date";
 
-const CurrentCard = ({ location, current, feelsLike, icon, iconAlt, minTemp, maxTemp, humidity }) => {
+const CurrentCard = ({ location, current, feelsLike, icon, iconAlt, minTemp, maxTemp, humidity, pres }) => {
     const date = new Date();
     const formattedDate = `${getDayOfWeek(date)}, ${getMonthString(date)} ${formatDay(date)}`
-
+    const pressure = (pres * 0.02953).toFixed(2);
+    console.log(pressure)
     return (
         <div className="current">
             <div className="current-header">
@@ -19,6 +20,7 @@ const CurrentCard = ({ location, current, feelsLike, icon, iconAlt, minTemp, max
                 <div>
                     <div>Feels like: {Math.round(feelsLike)}°F</div>
                     <div>Humidity: {humidity}%</div>
+                    <div>Pressure: ↓ {pressure} in</div>
                 </div>
                 <div>
                     <div></div>
