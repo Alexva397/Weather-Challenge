@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import "./App.css";
+import { ImSpinner2 } from "react-icons/im";
+
+import { fetchCurrentByName, fetchCurrentByCoords, fetchForecastByCoords, fetchForecastByName } from "./store/features/weather/weatherSlice";
+import { addCity, removeCity } from "./store/features/pinned/pinnedSlice";
 import CurrentCard from "./components/CurrentCard";
 import ForecastCard from "./components/ForecastCard";
 import Header from "./components/Header";
-import { ImSpinner2 } from "react-icons/im";
-import { fetchCurrentByName, fetchCurrentByCoords, fetchForecastByCoords, fetchForecastByName } from "./store/features/weather/weatherSlice";
+import "./App.css";
 
 function App() {
-  const weather = useSelector((state) => state.weather);
-  const currentWeather = weather.current;
-  const forecastWeather = weather.forecast;
   const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const currentWeather = state.weather.current;
+  const forecastWeather = state.weather.forecast;
+  const pinnedCities = state.pinned.cities;
 
   const [search, setSearch] = useState("");
-  const [geolocation, setGeoLocation] = useState(null)
+  const [geolocation, setGeoLocation] = useState(null);
 
   useEffect(() => {
     console.log("CALLED")
@@ -28,12 +31,12 @@ function App() {
       fetchLocalWeather(coordinates);
     })
 
-  }, [])
+  }, []);
 
   const fetchLocalWeather = (c) => {
     dispatch(fetchCurrentByCoords(c));
     dispatch(fetchForecastByCoords(c));
-  }
+  };
 
   const handleInputChange = (e) => setSearch(e.target.value);
 
@@ -41,7 +44,16 @@ function App() {
     e.preventDefault();
     dispatch(fetchCurrentByName(search.trim()));
     dispatch(fetchForecastByName(search.trim()));
-  }
+  };
+
+  const handleUserPinClick = () => {
+    let index = -1;
+    for (let i = 0; i < pinnedCities.length; i++) {
+        if (pinnedCities[i] === currentWeather.name) index = i;
+    }
+    if (index > -1) dispatch(removeCity(currentWeather.name));
+    else dispatch(addCity(currentWeather.name));
+  };
 
   return (
     <div className="background">
@@ -51,7 +63,7 @@ function App() {
         handleSubmit={handleUserSubmit}
       />
       <main>
-        {(weather.loading || (currentWeather === null && forecastWeather === null)) ?
+        {(state.weather.loading || (currentWeather === null && forecastWeather === null)) ?
           <div>
             <ImSpinner2 className="spinner" />
           </div>
@@ -71,6 +83,7 @@ function App() {
               windSpeed={currentWeather.wind.speed}
               sunrise={currentWeather.sys.sunrise}
               sunset={currentWeather.sys.sunset}
+              pinCity={() => handleUserPinClick()}
             />
             <div className="forecast">
               <div className="forecast-title">{currentWeather.name}'s Forecast</div>
@@ -101,6 +114,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;

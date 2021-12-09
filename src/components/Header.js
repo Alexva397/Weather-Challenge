@@ -1,9 +1,10 @@
 import "./Header.css";
+import { BsLightning } from "react-icons/bs"
 
 const Header = ({ searchValue, onChange, handleSubmit }) => {
     return (
         <header className="App-header">
-            <h1 className="title">Weather</h1>
+            <h1 className="title"><BsLightning /> Lightning Weather</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     className="search"
