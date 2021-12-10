@@ -9,7 +9,7 @@
 
 Upon opening the app, you are presented with the local weather based on your current location.
 
-![local](./reademe-assets/local-weather.gif)
+![local](reademe-assets/local-weather.gif)
 
 
 
