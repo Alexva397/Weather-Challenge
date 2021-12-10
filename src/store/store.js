@@ -1,6 +1,5 @@
 import { configureStore, } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
-import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 import weatherReducer from "./features/weather/weatherSlice";
 import pinnedReducer from "./features/pinned/pinnedSlice";
