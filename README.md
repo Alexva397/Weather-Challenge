@@ -3,16 +3,20 @@
 #### *API key is hardcoded in app for ease of use*
 
 
+
 ## Usage
 
 #### Local Weather
 
 Upon opening the app, you are presented with the local weather based on your current location.
 
-![local](reademe-assets/local-weather.gif)
+#### Search by city
 
+User can search for current weather and a 5-day forecast of any city by name.
 
+#### Saving Cities
 
+The user has the option to pin cities to for a quicker weather update at a later time.
 
 
 
