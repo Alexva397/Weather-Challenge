@@ -26,7 +26,7 @@ const CurrentCard = ({ location, current, feelsLike, icon, iconAlt, minTemp, max
         }
         if (index > -1) setIsPinned(true);
         else setIsPinned(false);
-    }, [pinnedCities]);
+    }, [pinnedCities, currentCity]);
 
     return (
         <div className="current">
@@ -35,8 +35,8 @@ const CurrentCard = ({ location, current, feelsLike, icon, iconAlt, minTemp, max
                     <div style={{ display: 'flex', justifyContent: 'flex-start', alignSelf: 'flex-start' }}>
                         <button className="btn-no-style" onClick={pinCity}>
                         {!isPinned
-                            ? <RiPushpin2Line size={24} />
-                            : <RiPushpin2Fill size={24} />
+                            ? <RiPushpin2Line className="pin"/>
+                            : <RiPushpin2Fill className="pin"/>
                         }
                         </button>
                     </div>

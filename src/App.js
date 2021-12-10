@@ -15,19 +15,13 @@ function App() {
   const currentWeather = state.weather.current;
   const forecastWeather = state.weather.forecast;
   const pinnedCities = state.pinned.cities;
-
   const [search, setSearch] = useState("");
-  const [geolocation, setGeoLocation] = useState(null);
 
   useEffect(() => {
     console.log("CALLED")
     navigator.geolocation.getCurrentPosition((res) => {
       const { latitude, longitude } = res.coords;
-      const coordinates = {
-        lat: latitude,
-        lon: longitude
-      }
-      setGeoLocation(coordinates);
+      const coordinates = { lat: latitude, lon: longitude };
       fetchLocalWeather(coordinates);
     })
 
@@ -49,7 +43,7 @@ function App() {
   const handleUserPinClick = () => {
     let index = -1;
     for (let i = 0; i < pinnedCities.length; i++) {
-        if (pinnedCities[i] === currentWeather.name) index = i;
+      if (pinnedCities[i] === currentWeather.name) index = i;
     }
     if (index > -1) dispatch(removeCity(currentWeather.name));
     else dispatch(addCity(currentWeather.name));
@@ -63,53 +57,50 @@ function App() {
         handleSubmit={handleUserSubmit}
       />
       <main>
-        {(state.weather.loading || (currentWeather === null && forecastWeather === null)) ?
-          <div>
-            <ImSpinner2 className="spinner" />
-          </div>
+        {(state.weather.loading || (currentWeather === null && forecastWeather === null))
+          ? <ImSpinner2 className="spinner" />
           : (currentWeather !== null && forecastWeather !== null) &&
-          <>
-            <CurrentCard
-              location={currentWeather.name}
-              current={currentWeather.main.temp}
-              feelsLike={currentWeather.main.feels_like}
-              icon={currentWeather.weather[0].icon}
-              iconAlt={currentWeather.weather[0].description}
-              minTemp={currentWeather.main.temp_min}
-              maxTemp={currentWeather.main.temp_max}
-              humidity={currentWeather.main.humidity}
-              pres={currentWeather.main.pressure}
-              windDirection={currentWeather.wind.deg}
-              windSpeed={currentWeather.wind.speed}
-              sunrise={currentWeather.sys.sunrise}
-              sunset={currentWeather.sys.sunset}
-              pinCity={() => handleUserPinClick()}
-            />
-            <div className="forecast">
-              <div className="forecast-title">{currentWeather.name}'s Forecast</div>
-              <div className="day-container">
-                {forecastWeather.list.slice(0, 5).map((day, index) => (
-                  <div key={index} style={{ display: 'flex'}}>
-                    <ForecastCard
-                      key={day.dt}
-                      date={day.dt}
-                      maxTemp={day.temp.max}
-                      minTemp={day.temp.min}
-                      humidity={day.humidity}
-                      icon={day.weather[0].icon}
-                      iconAlt={day.weather[0].description}
-                      windDirection={day.deg}
-                      windSpeed={day.speed}
-                    />
-                    {index < 4 &&
-                      <div className="forecast-divider"></div>
-                    }
-                  </div>
-                ))}
+            <>
+              <CurrentCard
+                location={currentWeather.name}
+                current={currentWeather.main.temp}
+                feelsLike={currentWeather.main.feels_like}
+                icon={currentWeather.weather[0].icon}
+                iconAlt={currentWeather.weather[0].description}
+                minTemp={currentWeather.main.temp_min}
+                maxTemp={currentWeather.main.temp_max}
+                humidity={currentWeather.main.humidity}
+                pres={currentWeather.main.pressure}
+                windDirection={currentWeather.wind.deg}
+                windSpeed={currentWeather.wind.speed}
+                sunrise={currentWeather.sys.sunrise}
+                sunset={currentWeather.sys.sunset}
+                pinCity={() => handleUserPinClick()}
+              />
+              <div className="forecast">
+                <div className="forecast-title">{currentWeather.name}'s Forecast</div>
+                <div className="day-container">
+                  {forecastWeather.list.slice(0, 5).map((day, index) => (
+                    <div key={index} style={{ display: 'flex' }}>
+                      <ForecastCard
+                        key={day.dt}
+                        date={day.dt}
+                        maxTemp={day.temp.max}
+                        minTemp={day.temp.min}
+                        humidity={day.humidity}
+                        icon={day.weather[0].icon}
+                        iconAlt={day.weather[0].description}
+                        windDirection={day.deg}
+                        windSpeed={day.speed}
+                      />
+                      {index < 4 &&
+                        <div className="forecast-divider"></div>
+                      }
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </>
-
+            </>
         }
       </main>
     </div>

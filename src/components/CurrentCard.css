@@ -8,16 +8,14 @@
     overflow: auto
 }
 
-.current-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.pin {
+    color: #3D5A80;
+    font-size: 24px;
 }
 
-.current-header-text {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
+.pin:hover {
+    transform: scale(1.2);
+    transition-duration: 0.5s;
 }
 
 .btn-no-style {
@@ -28,6 +26,18 @@
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+}
+
+.current-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.current-header-text {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
 }
 
 .location-date {
@@ -79,7 +89,7 @@
 }
 
 .detail {
-    padding: 10px 20px;
+    padding: 10px 10px;
     font-size: 20px;
     display: flex;
     justify-content: space-between;
@@ -87,7 +97,7 @@
 }
 
 .detail-last {
-    padding: 10px 20px;
+    padding: 10px 10px;
     font-size: 20px;
     display: flex;
     justify-content: space-between;

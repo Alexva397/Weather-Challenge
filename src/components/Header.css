@@ -1,4 +1,4 @@
-.App-header {
+  .App-header {
     min-height: 20vh;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
     flex-direction: row;
     border: 1px solid #3D5A80;
     border-radius: 5px;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
   }
   
   .search {
@@ -45,5 +45,33 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border: none;
-    background-color: #5fd75f;
+    background-color: #afd7ff;
+  }
+
+  .saved-container {
+    display: flex;
+    align-self: flex-start;
+    align-items: flex-end;
+    margin: 0 0 1vh 10vw;
+  }
+
+  .saved-text {
+    color: #fff;
+    font-size: 18px;
+    padding-bottom: 1px;
+  }
+
+  .saved-btn {
+    background: none;
+    color: #fff;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+    margin-left: 1vw;
+    font-size: 18px;
+  }
+
+  .saved-btn:hover {
+    color: #6b8cb8;
   }
