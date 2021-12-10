@@ -10,6 +10,7 @@
   
   .forecast-date {
     font-size: 22px;
+    color: var(--grey);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
@@ -21,13 +22,16 @@
   
   .max-forecast {
     font-size: 30px;
+    color: var(--grey);
   }
   .min-forecast {
     font-size: 18px;
+    color: var(--grey);
   }
 
   .forecast-wind {
     margin-top: 15px;
     font-size: 18px;
+    color: var(--grey);
     text-align: center;
   }

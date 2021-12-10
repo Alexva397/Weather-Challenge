@@ -19,12 +19,16 @@ function App() {
 
   useEffect(() => {
     console.log("CALLED")
-    navigator.geolocation.getCurrentPosition((res) => {
-      const { latitude, longitude } = res.coords;
-      const coordinates = { lat: latitude, lon: longitude };
-      fetchLocalWeather(coordinates);
-    })
-
+    if (pinnedCities.length > 0) {
+      dispatch(fetchCurrentByName(pinnedCities[0]));
+      dispatch(fetchForecastByName(pinnedCities[0]));
+    } else {
+      navigator.geolocation.getCurrentPosition((res) => {
+        const { latitude, longitude } = res.coords;
+        const coordinates = { lat: latitude, lon: longitude };
+        fetchLocalWeather(coordinates);
+      })
+    }
   }, []);
 
   const fetchLocalWeather = (c) => {

@@ -45,7 +45,7 @@ const CurrentCard = ({ location, current, feelsLike, icon, iconAlt, minTemp, max
                         <div className="min-max">{minTemp}° / {maxTemp}°</div>
                     </div>
                     <div className="location-date">
-                        <h2>{location}</h2>
+                        <h2 className="location">{location}</h2>
                         <div className="date">{formattedDate}</div>
                     </div>
                 </div>
