@@ -18,7 +18,6 @@ function App() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    console.log("CALLED")
     if (pinnedCities.length > 0) {
       dispatch(fetchCurrentByName(pinnedCities[0]));
       dispatch(fetchForecastByName(pinnedCities[0]));
