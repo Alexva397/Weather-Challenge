@@ -29,8 +29,8 @@ const Header = ({ searchValue, onChange, handleSubmit }) => {
             {cities.length > 0 &&
                 <div className="saved-container">
                     <div className="saved-text">Saved:</div>
-                    {cities.map(city => (
-                        <button onClick={() => handleSavedSerach(city)} className="saved-btn">{city}</button>
+                    {cities.map((city, index) => (
+                        <button key={index} onClick={() => handleSavedSerach(city)} className="saved-btn">{city}</button>
                     ))}
                 </div>
             }
